@@ -22,7 +22,8 @@
                         <li class="list-item list-item"
                             *ngFor="let module of course.modules.value; let i = index">
                             <div style="cursor: pointer" (click)="toggleModule(module)">
-                                <fa-icon icon="chevron-right" style="margin-right:8px"></fa-icon> {{ module.title.value}}
+                                <fa-icon *ngIf="isModuleOpened(module)" icon="chevron-down" style="margin-right:8px"></fa-icon>
+                                <fa-icon *ngIf="!isModuleOpened(module)" icon="chevron-right" style="margin-right:8px"></fa-icon> {{ module.title.value}}
                             </div>
 
                             <div *ngIf="isModuleOpened(module)" style="margin-top: 6px">
