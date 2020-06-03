@@ -10,6 +10,9 @@ import { CourseOverviewComponent } from './pages/course-overview.component';
 import { CoursesComponent } from './pages/courses.component';
 import { LoginComponent } from './pages/login.component';
 import { ResourcesComponent } from './pages/resources.component';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 @NgModule({
     declarations: [
@@ -20,8 +23,13 @@ import { ResourcesComponent } from './pages/resources.component';
         CoursesComponent,
         ResourcesComponent
     ],
-    imports: [FlexLayoutModule, BrowserModule, AppRoutingModule, RouterModule],
+    imports: [FontAwesomeModule, FlexLayoutModule, BrowserModule, AppRoutingModule, RouterModule],
     providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(faIconLib: FaIconLibrary) {
+    // Add an icon to the library for convenient access in other components
+    faIconLib.addIconPacks(fas, far);
+  }
+}

@@ -1,83 +1,95 @@
-
-<h2 *ngIf="courseNotAvailable" style="text-align: center; padding-top: 64px">
+<h2 *ngIf="courseNotAvailable" style="margin-top: 130px; text-align: center; padding-top: 64px">
     Course is not available in this language
 </h2>
 
 <div *ngIf="course">
-   
+
     <!-- Jumbotron -->
     <div class="jumbotron" [style]="'background: url('+ courseImage +');'">
         <span class="jumbotron__title">{{ course.title.value }}</span>
-      </div>
-  
-      <div class="container container-detail">
+    </div>
+
+    <div class="container container-detail">
         <div class="detail-page">
-          <!-- Sidebar -->
-          <div class="sidebar">
-            <!-- Course overview -->
-            <div class="sidebar__overview">
-              <div class="sidebar__overview-title">
-                Course overview
-              </div>
-              <ul class="sidebar__overview-list">
-                <li class="list-item list-item--with-chevron" *ngFor="let module of course.modules.value; let i = index">
-                    {{ module.title.value}}
-                </li>
-              </ul>
-            </div>
-  
-            <!-- Related resources -->
-            <div class="related-resources">
-              <div class="related-resources__title">Related resources</div>
-              <!-- Related resource 1 -->
-              <div class="related-resource" *ngFor="let persona of personas">
-                <div class="related-resource__title">Customer persona: {{  persona.name.value }}</div>
-                <div class="related-resource__image">
-                    <img
-                      class="image"
-                      [src]="getPersonaImage(persona)"
-                    />
-                  </div>
-                <div class="related-resource-quote">
-                {{ persona.quote.value}}
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Course overview -->
+                <div class="sidebar__overview">
+                    <div class="sidebar__overview-title">
+                        Course overview
+                    </div>
+                    <ul class="sidebar__overview-list">
+                        <li class="list-item list-item"
+                            *ngFor="let module of course.modules.value; let i = index">
+                            <div style="cursor: pointer" (click)="toggleModule(module)">
+                                <fa-icon icon="chevron-right" style="margin-right:8px"></fa-icon> {{ module.title.value}}
+                            </div>
+
+                            <div *ngIf="isModuleOpened(module)" style="margin-top: 6px">
+                                <ul>
+                                    <li style="font-size: 13px; margin-top: 8px"  *ngFor="let chapter of module.selectChapters.value">
+                                    {{ chapter.title.value}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <a class="related-resource-link" href="#">View persona</a>
-              </div>
+
+                <!-- Related resources -->
+                <div class="related-resources">
+                    <div class="related-resources__title">Related resources</div>
+                    <!-- Related resource 1 -->
+                    <div class="related-resource" *ngFor="let persona of personas">
+                        <div class="related-resource__title">Customer persona: {{  persona.name.value }}</div>
+                        <div class="related-resource__image">
+                            <img class="image" [src]="getPersonaImage(persona)" />
+                        </div>
+                        <div class="related-resource-quote">
+                            {{ persona.quote.value}}
+                        </div>
+                        <a class="related-resource-link" routerLink="./">View persona</a>
+                    </div>
+                </div>
             </div>
-          </div>
-  
-             <!-- Main content -->
-             <div class="main-content">
+
+            <!-- Main content -->
+            <div class="main-content">
                 <!-- Overview -->
                 <div class="content__title">Course overview</div>
                 <div class="content__teaser" [innerHtml]="course.shortSummary.value">
                 </div>
                 <div class="button-wrapper">
-                  <button class="button course-detail-button" (click)="generatePdf()">
-                    Download course summary in PDF
-                  </button>
+                    <button class="button course-detail-button" (click)="generatePdf()">
+                        Download course summary in PDF
+                    </button>
                 </div>
-                <a class="content__buy-link" href="#">Buy the course for {{ coursePrice }}</a>
-      
+                <a class="content__buy-link">Buy the course for {{ coursePrice }}</a>
+
                 <!-- Modules -->
                 <div class="modules">
-                  <div class="modules__title">Modules</div>
-                  <!-- Module 1 -->
-                  <div class="module" *ngFor="let module of course.modules.value; let i = index">
-                    <div class="module__title">{{ i + 1}}: {{ module.title.value }}</div>
-                    <div class="module__overview" [innerHtml]="module.shortSummary.value">
+                    <div class="modules__title">Modules</div>
+                    <!-- Module 1 -->
+                    <div class="module" *ngFor="let module of course.modules.value; let i = index">
+                        <div class="module__title">{{ i + 1}}: {{ module.title.value }}</div>
+                        <div class="module__overview" [innerHtml]="module.shortSummary.value">
+                        </div>
+                        <div class="module__structure">
+                            <div class="module__structure-title">Module structure:</div>
+                            <ul class="module__structure-list">
+
+                                <li class="list-item list-item"
+                                    *ngFor="let chapter of module.selectChapters.value">
+
+                                    <fa-icon icon="arrow-right" style="margin-right:8px"></fa-icon>
+
+                                    {{ chapter.title.value }}
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="module__structure">
-                      <div class="module__structure-title">Module structure:</div>
-                      <ul class="module__structure-list">
-                        <li class="list-item list-item--with-arrow" *ngFor="let chapter of module.selectChapters.value">{{ chapter.title.value }}</li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
-              </div>
+            </div>
         </div>
-      </div>
+    </div>
 </div>
-
-

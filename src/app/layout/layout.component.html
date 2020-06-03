@@ -8,13 +8,15 @@
   <div class="menu__right">
     <ng-container *ngFor="let language of languages; let last = last">
       <a class="course-wrapper" [class.menu__link-inactive]="activeLanguage !== language.codename"
-        class="menu__link menu__link-language" style="cursor:pointer"
-        (click)="setLanguage(language.codename)">
-        {{ language.title}} 
+        class="menu__link menu__link-language" style="cursor:pointer" (click)="setLanguage(language.codename)">
+        {{ language.title}}
       </a>
       <div class="vertical-line" *ngIf="!last"></div>
     </ng-container>
 
+    <a class="menu__link" routerLink="/auth/courses">
+      <fa-icon icon="user" style="margin-right:8px"></fa-icon>
+    </a>
     <a [routerLink]="'/'" class="menu__link">Logout</a>
   </div>
 </div>

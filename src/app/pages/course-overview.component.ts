@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { BaseComponent, BaseDependencies } from '../base/base.component';
 import { CourseNew } from '../data/course_new';
 import { CustomerPersona } from '../data/customer_persona';
+import { Module } from '../data/module_01a2a1b';
 import { pdfGeneratorHelper } from '../helpers/pdf-generator.helper';
 
 @Component({
@@ -27,15 +28,17 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
     }
 
     public get coursePrice(): string {
-      if (!this.course) {
-          return '';
-      }
+        if (!this.course) {
+            return '';
+        }
 
-      const locale = this.getActiveLanguage() === 'default' ? 'en-US' : 'de-DE';
-      const currency = this.course.currency.value[0].codename;
+        const locale = this.getActiveLanguage() === 'default' ? 'en-US' : 'de-DE';
+        const currency = this.course.currency.value[0].codename;
 
-      return new Intl.NumberFormat(locale, { style: 'currency', currency}).format(this.course.price.value);
-  }
+        return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(this.course.price.value);
+    }
+
+    public openedModuleCodenames: string[] = [];
 
     constructor(dependencies: BaseDependencies, cdr: ChangeDetectorRef, activatedRoute: ActivatedRoute) {
         super(dependencies, cdr);
@@ -67,7 +70,20 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
     }
 
     getPersonaImage(persona: CustomerPersona): string {
-      return persona.image.value[0].url;
+        return persona.image.value[0].url;
+    }
+
+    isModuleOpened(module: Module): boolean {
+        return this.openedModuleCodenames.includes(module.system.codename);
+    }
+
+    toggleModule(module: Module): void {
+        if (this.isModuleOpened(module)) {
+            this.openedModuleCodenames = this.openedModuleCodenames.filter((m) => m !== module.system.codename);
+        } else {
+            this.openedModuleCodenames.push(module.system.codename);
+        }
+        super.markForCheck();
     }
 
     loadPersonas(language: string): void {

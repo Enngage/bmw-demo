@@ -47,18 +47,6 @@
     margin-right: 25px;
   }
   
-  .list-item--with-chevron::before {
-    content: "";
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-    transform: rotate(-45deg);
-    margin-right: 15px;
-    position: relative;
-    top: -1px;
-  }
-  
   .list-item--without-icon {
     margin-left: 25px;
   }
@@ -169,10 +157,8 @@
     margin-bottom: 16px;
   }
   
-  .list-item--with-arrow:before {
-    content: "🡢";
+  .list-item{
     font-size: 16px;
-    padding-right: 10px;
     padding-left: 24px;
   }
   

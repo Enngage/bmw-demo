@@ -5,7 +5,7 @@ import { Author } from '../data/author';
 import { Chapter } from '../data/chapter';
 import { CourseNew } from '../data/course_new';
 import { CustomerPersona } from '../data/customer_persona';
-import { Module01a2a1b } from '../data/module_01a2a1b';
+import { Module } from '../data/module_01a2a1b';
 import { Training } from '../data/training';
 
 @Injectable({
@@ -38,7 +38,7 @@ export class KontentClientService {
                 },
                 {
                     type: 'module_01a2a1b',
-                    resolve: (data) => new Module01a2a1b()
+                    resolve: (data) => new Module()
                 },
                 {
                     type: 'training',
