@@ -48,7 +48,6 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
             this.dependencies.languageService.langaugeChanged$.pipe(
                 map((newLanguage) => {
                     this.loadCourse(newLanguage, this.courseCodename);
-                    this.loadPersonas(this.getActiveLanguage());
                 })
             )
         );
@@ -56,7 +55,6 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadCourse(this.getActiveLanguage(), this.courseCodename);
-        this.loadPersonas(this.getActiveLanguage());
     }
 
     /**
@@ -86,23 +84,6 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
         super.markForCheck();
     }
 
-    loadPersonas(language: string): void {
-        super.subscribeToObservable(
-            this.deliveryClient
-                .items<CustomerPersona>()
-                .type('customer_persona')
-                .languageParameter(language)
-                .depthParameter(5)
-                .toObservable()
-                .pipe(
-                    map((response) => {
-                        this.personas = response.items.filter((m) => m.system.language === language);
-                        super.markForCheck();
-                    })
-                )
-        );
-    }
-
     loadCourse(language: string, itemCodename: string): void {
         super.subscribeToObservable(
             this.deliveryClient
@@ -115,13 +96,15 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
                         if (response.item.system.language === language) {
                             this.course = response.item;
                             this.courseNotAvailable = false;
+
+                            this.personas = response.item.courseAudience.value;
                         } else {
                             this.courseNotAvailable = true;
                             this.course = undefined;
+                            this.personas = [];
                         }
 
                         super.markForCheck();
-                        console.log(response);
                     })
                 )
         );
