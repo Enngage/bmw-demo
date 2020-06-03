@@ -1,0 +1,22 @@
+<div class="container container__with-menu">
+    <div class="courses-overview">
+        <div class="h2">Additional resources</div>
+
+        <div style="margin-top:32px; padding-bottom: 24px">
+            <div fxLayout="row wrap" fxLayoutGap="24px grid">
+                <div  *ngFor="let persona of personas" fxLayout="column" [fxFlex]="100 / 3"
+                    fxFlex.lt-md="100%">
+                    <div>
+                        <img class="course-preview" [src]="persona.image.value[0].url" alt="" />
+                        <div class="course-name ">
+                            {{ persona.name.value }} <span *ngIf="persona.age.value > 0">&nbsp;({{ persona.age.value}})</span>
+                        </div>
+                        <div class="course-name" style="font-size: 13px">
+                            {{ persona.quote.value }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

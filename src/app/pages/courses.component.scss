@@ -1,0 +1,28 @@
+.courses-overview {
+    padding-top: 64px;
+}
+
+.course {
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(136, 136, 136, 0.25);
+
+    .course-name {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        padding: 12px
+    }
+}
+
+.course-wrapper {
+    text-decoration: none;
+}
+
+.course:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.course-preview {
+    max-width: 100%;
+    max-height: 100%;
+}

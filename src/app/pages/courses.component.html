@@ -1,1 +1,19 @@
-courses
+<div class="container container__with-menu">
+    <div class="courses-overview">
+        <div class="h2">Available courses</div>
+
+        <div style="margin-top:32px; padding-bottom: 24px">
+            <div fxLayout="row wrap" fxLayoutGap="24px grid">
+                <a class="course-wrapper" [routerLink]="'/auth/view/' + course.system.codename" *ngFor="let course of courses" fxLayout="column" [fxFlex]="100 / 2" 
+                    fxFlex.lt-md="100%">
+                    <div class="course">
+                        <img class="course-preview" [src]="course.headerImage.value[0].url" alt="" />
+                        <div class="course-name ">
+                            {{ course.title.value }}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CoursesComponent } from './pages/courses.component';
 import { CourseOverviewComponent } from './pages/course-overview.component';
+import { ResourcesComponent } from './pages/resources.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: 'auth', component: LayoutComponent, children: [
       { path: 'courses', component: CoursesComponent },
+      { path: 'resources', component: ResourcesComponent },
       { path: 'view/:codename', component: CourseOverviewComponent },
     ]
   },

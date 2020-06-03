@@ -1,9 +1,19 @@
-login
-
-<div>
-    <a [routerLink]="'/auth/courses'">Courses</a>
-</div>
-
-<div>
-    <a [routerLink]="'/auth/view/mycourse'">view course</a>
+<div class="container login-container">
+    <div class="login-form">
+        <div class="logo">
+            
+        </div>
+        <div class="login-form__input">
+            <div class="label">Email:</div>
+            <input type="text" class="input" />
+        </div>
+        <div class="login-form__input">
+            <div class="label">Password:</div>
+            <input type="password" class="input" />
+            <a href="#" class="forgot-password">Forgot your password?</a>
+        </div>
+        <div class="button-wrapper">
+            <button class="button login-button" [routerLink]="'/auth/courses'">Log in</button>
+        </div>
+    </div>
 </div>

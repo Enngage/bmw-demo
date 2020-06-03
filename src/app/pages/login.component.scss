@@ -1,0 +1,49 @@
+.login-form {
+    width: 500px;
+    height: 350px;
+    margin: 0 auto;
+    padding: 32px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: white;
+  }
+  
+  .login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://assets-eu-01.kc-usercontent.com/2542ce4a-3be3-01e8-fdf0-ce1b87b58f11/8f6c9327-df4c-4ec5-b798-22acaf920ab5/bmw_background.png');
+    background-size: 1920px;
+  }
+  
+  .login-form__input {
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    height: 32px;
+    width: 100%;
+    border: 1px solid #d0cfce;
+    font-size: 18px;
+  }
+  
+  .forgot-password {
+    color: #4c4d52;
+  }
+  
+  .login-button {
+    background-color: #0a68f5;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .button-wrapper {
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .logo {
+    margin-bottom: 16px;
+  }
+  

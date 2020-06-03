@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+@import './reset.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  box-sizing: border-box;
+  color: #4c4d52;
+  width: 100%;
+  margin: 0;
+}
+
+.button {
+  height: 38px;
+  padding: 6px 8px;
+  margin: 2px;
+  font-size: 16px;
+  border-width: 1px;
+  width: 100%;
+}
+
+.container {
+  padding: 0 10%;
+}
+
+.container__with-menu {
+  margin-top: 116px;
+}
+
+.h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: black;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 116px;
+  box-shadow: 0px 1px 0px #cccccc;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  z-index: 1000;
+  background: white;
+}
+
+.menu__left,
+.menu__right {
+  display: flex;
+  align-items: center;
+}
+
+.menu__link {
+  font-size: 24px;
+  color: black;
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.menu__link:hover {
+  text-decoration: underline;
+}
+
+.menu__link-inactive {
+  color: #999999;
+}
+
+.menu__link-language {
+  margin: 0;
+}
+
+.vertical-line {
+  border-left: 1px solid #999999;
+  height: 32px;
+  margin: 0 16px;
+}
+
+.logo {
+  background: url("https://assets-eu-01.kc-usercontent.com/2542ce4a-3be3-01e8-fdf0-ce1b87b58f11/509eebd2-11f0-4cb5-be7a-01f81ee842c4/Logo.png");
+  width: 252px;
+  height: 52px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none!important;
+  }
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+}

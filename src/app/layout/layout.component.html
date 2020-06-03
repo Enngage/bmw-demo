@@ -1,4 +1,23 @@
-Master layout
+<div class="menu">
+  <div class="menu__left">
+    <div class="logo" [routerLink]="'/auth/courses'">
+    </div>
+    <a [routerLink]="'/auth/courses'" class="menu__link">Available courses</a>
+    <a [routerLink]="'/auth/resources'" class="menu__link">Additional resources</a>
+  </div>
+  <div class="menu__right">
+    <ng-container *ngFor="let language of languages; let last = last">
+      <a class="course-wrapper" [class.menu__link-inactive]="activeLanguage !== language.codename"
+        class="menu__link menu__link-language" style="cursor:pointer"
+        (click)="setLanguage(language.codename)">
+        {{ language.title}} 
+      </a>
+      <div class="vertical-line" *ngIf="!last"></div>
+    </ng-container>
+
+    <a [routerLink]="'/'" class="menu__link">Logout</a>
+  </div>
+</div>
 
 <div>
   <router-outlet></router-outlet>

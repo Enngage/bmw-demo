@@ -5,12 +5,14 @@ import { catchError, takeUntil } from 'rxjs/operators';
 
 import { observableHelper } from '../helpers/obsevable.helper';
 import { KontentClientService } from '../services/kontent-client.service';
+import { LanguageService } from '../services/language.service';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BaseDependencies {
-    constructor(public kontentClientService: KontentClientService) {}
+    constructor(public kontentClientService: KontentClientService, public languageService: LanguageService, public router: Router) {}
 }
 
 @Directive()
@@ -46,5 +48,9 @@ export abstract class BaseComponent implements OnDestroy {
             .subscribe(() => {
                 this.markForCheck();
             });
+    }
+
+    protected getActiveLanguage(): string {
+        return this.dependencies.languageService.languageSource.getValue();
     }
 }

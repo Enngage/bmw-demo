@@ -2,14 +2,14 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { BaseComponent, BaseDependencies } from '../base/base.component';
-import { CourseNew } from '../data/course_new';
+import { CustomerPersona } from '../data/customer_persona';
 
 @Component({
-    templateUrl: './courses.component.html',
-    styleUrls: ['courses.component.scss']
+    templateUrl: './resources.component.html',
+    styleUrls: ['resources.component.scss']
 })
-export class CoursesComponent extends BaseComponent implements OnInit {
-    public courses: CourseNew[] = [];
+export class ResourcesComponent extends BaseComponent implements OnInit {
+    public personas: CustomerPersona[] = [];
 
     constructor(dependencies: BaseDependencies, cdr: ChangeDetectorRef) {
         super(dependencies, cdr);
@@ -30,13 +30,13 @@ export class CoursesComponent extends BaseComponent implements OnInit {
     private loadCourses(language: string): void {
         super.subscribeToObservable(
             this.deliveryClient
-                .items<CourseNew>()
-                .type('course_new')
+                .items<CustomerPersona>()
+                .type('customer_persona')
                 .languageParameter(language)
                 .toObservable()
                 .pipe(
                     map((response) => {
-                        this.courses = response.items.filter(m => m.system.language === language);
+                        this.personas = response.items.filter((m) => m.system.language === language);
                         super.markForCheck();
                     })
                 )
