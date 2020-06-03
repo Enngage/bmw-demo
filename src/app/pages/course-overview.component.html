@@ -26,7 +26,7 @@
                                 <fa-icon *ngIf="!isModuleOpened(module)" icon="chevron-right" style="margin-right:8px"></fa-icon> {{ module.title.value}}
                             </div>
 
-                            <div *ngIf="isModuleOpened(module)" style="margin-top: 6px">
+                            <div *ngIf="isModuleOpened(module)" style="margin-left: 40px; margin-top: 6px">
                                 <ul>
                                     <li style="font-size: 13px; margin-top: 8px"  *ngFor="let chapter of module.selectChapters.value">
                                     {{ chapter.title.value}}
