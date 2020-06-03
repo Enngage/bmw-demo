@@ -20,7 +20,7 @@ export const H2 = (text: string) => ({
   bold: true,
   color: '#000000',
   fontSize: 24,
-  margin: [0, 16],
+  margin: [0, 10, 0, 16],
   text,
 });
 
@@ -43,7 +43,7 @@ export const Divider = () => ({
       color: '#DDDDDD',
     },
   ],
-  margin: [0, 24, 0, 24],
+  margin: [0, 24, 0, 18],
 });
 
 export const List = (children: any[]) => ({
@@ -54,6 +54,13 @@ export const List = (children: any[]) => ({
 export const UnbreakableStack = (children: any[]) => ({
   unbreakable: true,
   stack: children,
+});
+
+export const HeaderImage = (dataString) => ({
+  image: dataString,
+  height: 85,
+  width: 515,
+  margin: [0, 5, 0, 10],
 });
 
 export const BMWLogo = () => ({
@@ -68,7 +75,7 @@ export const BMWLogo = () => ({
       text: 'Training academy',
       fontSize: 23,
       color: '#666666',
-      margin: [0, -7, 0, 0],
+      margin: [0, -8, 0, 0],
       lineHeight: 0.8,
     },
   ],
