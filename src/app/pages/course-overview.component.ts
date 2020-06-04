@@ -51,14 +51,12 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
             this.usePreview = true;
         }
 
-        console.log(activatedRoute.snapshot.queryParamMap);
         if (activatedRoute.snapshot.queryParamMap.has('previewLang')) {
             this.itemLanguage = activatedRoute.snapshot.queryParamMap.get('previewLang');
         } else {
             this.itemLanguage = super.getActiveLanguage();
         }
 
-        console.log(this.itemLanguage);
         super.subscribeToObservable(
             this.dependencies.languageService.langaugeChanged$.pipe(
                 skip(1),
