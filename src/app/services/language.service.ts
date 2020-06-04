@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IDeliveryClient, DeliveryClient} from '@kentico/kontent-delivery';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

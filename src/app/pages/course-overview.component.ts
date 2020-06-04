@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, skip } from 'rxjs/operators';
 
 import { BaseComponent, BaseDependencies } from '../base/base.component';
 import { CourseNew } from '../data/course_new';
@@ -15,9 +15,12 @@ import { pdfGeneratorHelper } from '../helpers/pdf-generator.helper';
 export class CourseOverviewComponent extends BaseComponent implements OnInit {
     public readonly courseCodename: string;
 
+    public itemLanguage: string;
+
     public courseNotAvailable = false;
     public course?: CourseNew;
     public personas?: CustomerPersona[];
+    private readonly usePreview: boolean;
 
     public get courseImage(): string {
         if (!this.course) {
@@ -44,17 +47,31 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
         super(dependencies, cdr);
         this.courseCodename = activatedRoute.snapshot.paramMap.get('codename');
 
+        if (activatedRoute.snapshot.queryParamMap.has('isPreview')) {
+            this.usePreview = true;
+        }
+
+        console.log(activatedRoute.snapshot.queryParamMap);
+        if (activatedRoute.snapshot.queryParamMap.has('previewLang')) {
+            this.itemLanguage = activatedRoute.snapshot.queryParamMap.get('previewLang');
+        } else {
+            this.itemLanguage = super.getActiveLanguage();
+        }
+
+        console.log(this.itemLanguage);
         super.subscribeToObservable(
             this.dependencies.languageService.langaugeChanged$.pipe(
+                skip(1),
                 map((newLanguage) => {
-                    this.loadCourse(newLanguage, this.courseCodename);
+                    this.itemLanguage = newLanguage;
+                    this.loadCourse(this.courseCodename);
                 })
             )
         );
     }
 
     ngOnInit(): void {
-        this.loadCourse(this.getActiveLanguage(), this.courseCodename);
+        this.loadCourse(this.courseCodename);
     }
 
     /**
@@ -84,16 +101,19 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
         super.markForCheck();
     }
 
-    loadCourse(language: string, itemCodename: string): void {
+    loadCourse(itemCodename: string): void {
         super.subscribeToObservable(
             this.deliveryClient
                 .item<CourseNew>(itemCodename)
-                .languageParameter(language)
+                .queryConfig({
+                    usePreviewMode: this.usePreview
+                })
+                .languageParameter(this.itemLanguage)
                 .depthParameter(5)
                 .toObservable()
                 .pipe(
                     map((response) => {
-                        if (response.item.system.language === language) {
+                        if (response.item.system.language === this.itemLanguage) {
                             this.course = response.item;
                             this.courseNotAvailable = false;
 

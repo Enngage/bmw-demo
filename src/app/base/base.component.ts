@@ -19,6 +19,7 @@ export class BaseDependencies {
 export abstract class BaseComponent implements OnDestroy {
     protected readonly ngUnsubscribe: Subject<void> = new Subject<void>();
     protected readonly deliveryClient: IDeliveryClient;
+    protected readonly previewDeliveryClient: IDeliveryClient;
 
     constructor(protected dependencies: BaseDependencies, protected cdr: ChangeDetectorRef) {
         this.deliveryClient = dependencies.kontentClientService.deliveryClient;
@@ -51,6 +52,6 @@ export abstract class BaseComponent implements OnDestroy {
     }
 
     protected getActiveLanguage(): string {
-        return this.dependencies.languageService.languageSource.getValue();
+        return this.dependencies.languageService.languageSource.getValue() ?? 'default';
     }
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, skip } from 'rxjs/operators';
 
 import { BaseComponent, BaseDependencies } from '../base/base.component';
 import { CourseNew } from '../data/course_new';
@@ -17,6 +17,7 @@ export class CoursesComponent extends BaseComponent implements OnInit {
 
         super.subscribeToObservable(
             this.dependencies.languageService.langaugeChanged$.pipe(
+                skip(1),
                 map((newLanguage) => {
                     this.loadCourses(newLanguage);
                 })
@@ -36,7 +37,7 @@ export class CoursesComponent extends BaseComponent implements OnInit {
                 .toObservable()
                 .pipe(
                     map((response) => {
-                        this.courses = response.item.courses.value.filter(m => m.system.language === language);
+                        this.courses = response.item.courses.value.filter((m) => m.system.language === language);
                         super.markForCheck();
                     })
                 )
