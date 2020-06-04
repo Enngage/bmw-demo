@@ -1,14 +1,15 @@
 .container-detail {
     color: black;
   }
-  
+
   .jumbotron {
     position: relative;
     margin-top: 116px;
     height: 200px;
-    background-position-y: 28%;
+    background-position: center center;
+    background-size: cover;
   }
-  
+
   .jumbotron__title {
     padding: 32px;
     font-size: 36px;
@@ -19,58 +20,58 @@
     bottom: 0;
     left: 0;
   }
-  
+
   .detail-page {
     display: flex;
     margin-top: 32px;
   }
-  
+
   .sidebar {
     width: 27%;
     display: inline-block;
     padding-right: 24px;
   }
-  
+
   .main-content {
     width: 73%;
     display: inline-block;
     padding: 0px 380px 0 24px;
   }
-  
+
   .sidebar__overview-title {
     background: #eeeeee;
     height: 44px;
     padding: 10px 16px 10px 50px;
   }
-  
+
   .list-item--with-chevron {
     margin-right: 25px;
   }
-  
+
   .list-item--without-icon {
     margin-left: 25px;
   }
-  
+
   .sidebar__overview-list {
     padding-left: 25px;
   }
-  
+
   .sidebar__overview {
     overflow-wrap: break-word;
     margin-bottom: 32px;
   }
-  
+
   .list-item {
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  
+
   .related-resources__title {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 16px;
   }
-  
+
   .related-resource {
     border: 1px solid #dddddd;
     border-radius: 2px;
@@ -78,62 +79,62 @@
     overflow-wrap: break-word;
     margin-bottom: 16px;
   }
-  
+
   .related-resource__image {
     width: 80px;
     height: 80px;
     margin-bottom: 16px;
   }
-  
+
   .related-resource__title {
     font-size: 20px;
     line-height: 24px;
     font-weight: 600;
     padding-bottom: 16px;
   }
-  
+
   .related-resource-quote {
     margin-bottom: 16px;
   }
-  
+
   .related-resource-quote::before {
     content: "\201c";
   }
-  
+
   .related-resource-quote::after {
     content: "\201d";
   }
-  
+
   .related-resource-link {
     color: black;
   }
-  
+
   .content__title {
     font-size: 30px;
     line-height: 40px;
     font-weight: 600;
     margin-bottom: 24px;
   }
-  
+
   .content__teaser {
     margin-bottom: 24px;
   }
-  
+
   .content__buy-link {
     color: black;
   }
-  
+
   .modules {
     margin-top: 32px;
   }
-  
+
   .modules__title {
     font-size: 30px;
     line-height: 40px;
     font-weight: 600;
     margin-bottom: 16px;
   }
-  
+
   .module {
     border: 1px solid #dddddd;
     border-radius: 2px;
@@ -141,27 +142,27 @@
     overflow-wrap: break-word;
     margin-bottom: 16px;
   }
-  
+
   .module__title {
     font-size: 24px;
     line-height: 40px;
     font-weight: 600;
     margin-bottom: 16px;
   }
-  
+
   .module__overview {
     margin-bottom: 16px;
   }
-  
+
   .module__structure-title {
     margin-bottom: 16px;
   }
-  
+
   .list-item{
     font-size: 16px;
     padding-left: 24px;
   }
-  
+
   .course-detail-button {
     background-color: #0a68f5;
     color: white;
@@ -171,4 +172,3 @@
     width: 361px;
     margin-bottom: 24px;
   }
-  
