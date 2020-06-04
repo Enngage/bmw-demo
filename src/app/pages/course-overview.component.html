@@ -5,7 +5,7 @@
 <div *ngIf="course">
 
     <!-- Jumbotron -->
-    <div class="jumbotron" [style]="'background: url('+ courseImage +');'">
+    <div class="jumbotron" [style]="'background: url('+ courseImage +'); background-position: center center; background-size: cover;'">
         <span class="jumbotron__title">{{ course.title.value }}</span>
     </div>
 

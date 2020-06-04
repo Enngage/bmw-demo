@@ -59,7 +59,6 @@ export class PdfGeneratorHelper {
   }
 
   async generateCourseSummary(course: CourseNew) {
-    const courseCodename = course.system.codename;
     const courseName = course.title.value;
     const courseDescription = this.stripHtml(course.shortSummary.value);
 
@@ -85,7 +84,7 @@ export class PdfGeneratorHelper {
         A4Document([
           BMWLogo(),
           headerImageBase64 ? HeaderImage(headerImageBase64) : null,
-          H1(`${courseName} course summary`),
+          H1(`${courseName} - learning path`),
           Text(courseDescription),
           Divider(),
           ...modules.map((m, index) =>
@@ -99,7 +98,7 @@ export class PdfGeneratorHelper {
           ),
         ]),
       )
-      .download(`${courseCodename}_course_overview.pdf`);
+      .download(`BMW - One Pager - ${courseName}.pdf`);
   }
 }
 
