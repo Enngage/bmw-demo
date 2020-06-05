@@ -31,7 +31,7 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
     public translations = {
         courseOverview: ['Course overview', 'Kursüberblick'],
         courseAudience: ['Course audience', 'Kurspublikum'],
-        buyFor: ['BuyFor', 'Kaufen Sie den Kurs für'],
+        buyFor: ['Buy for', 'Kaufen Sie den Kurs für'],
         modules: ['Modules', 'Module'],
         moduleStructure: ['Module structure', 'Modulstruktur'],
         viewPersona: ['View persona', 'Persona anzeigen'],

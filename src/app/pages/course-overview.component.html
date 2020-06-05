@@ -29,7 +29,7 @@
                             <div *ngIf="isModuleOpened(module)" style="margin-left: 40px; margin-top: 6px">
                                 <ul>
                                     <li style="font-size: 13px; margin-top: 8px"  *ngFor="let chapter of module.selectChapters.value">
-                                    {{ chapter.title.value}}
+                                        {{ chapter.title.value}}
                                     </li>
                                 </ul>
                             </div>
@@ -65,7 +65,7 @@
                         {{ getText('downloadPdf')}}
                     </button>
                 </div>
-                <a class="content__buy-link"> {{ getText('buyFor')}} {{ coursePrice }}</a>
+                <a class="content__buy-link" routerLink="./"> {{ getText('buyFor')}} {{ coursePrice }}</a>
 
                 <!-- Modules -->
                 <div class="modules">
