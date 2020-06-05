@@ -22,6 +22,24 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
     public personas?: CustomerPersona[];
     private readonly usePreview: boolean;
 
+    public get translationArr(): number {
+        if (this.itemLanguage === 'german') {
+            return 1;
+        }
+        return 0;
+    }
+    public translations = {
+        courseOverview: ['Course overview', 'Kursüberblick'],
+        courseAudience: ['Course audience', 'Kurspublikum'],
+        buyFor: ['BuyFor', 'Kaufen Sie den Kurs für'],
+        modules: ['Modules', 'Module'],
+        moduleStructure: ['Module structure', 'Modulstruktur'],
+        viewPersona: ['View persona', 'Persona anzeigen'],
+        targetPersona: ['Target persona', 'Zielperson'],
+        downloadPdf: ['Download course as PDF', 'Kurszusammenfassung als PDF herunterladen'],
+
+    };
+
     public get courseImage(): string {
         if (!this.course) {
             return '';
@@ -66,6 +84,10 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
                 })
             )
         );
+    }
+
+    getText(key: string): string {
+        return this.translations[key][this.translationArr];
     }
 
     ngOnInit(): void {

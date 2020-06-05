@@ -16,7 +16,7 @@
                 <!-- Course overview -->
                 <div class="sidebar__overview">
                     <div class="sidebar__overview-title">
-                        Course overview
+                        {{ getText('courseOverview')}}
                     </div>
                     <ul class="sidebar__overview-list">
                         <li class="list-item list-item"
@@ -39,17 +39,17 @@
 
                 <!-- Related resources -->
                 <div class="related-resources">
-                    <div class="related-resources__title">Course audience</div>
+                    <div class="related-resources__title"> {{ getText('courseAudience')}}</div>
                     <!-- Related resource 1 -->
                     <div class="related-resource" *ngFor="let persona of personas">
-                        <div class="related-resource__title">Target persona: {{  persona.name.value }}</div>
+                        <div class="related-resource__title">{{getText('targetPersona')}}: {{  persona.name.value }}</div>
                         <div class="related-resource__image">
                             <img class="image" [src]="getPersonaImage(persona)" />
                         </div>
                         <div class="related-resource-quote">
                             {{ persona.quote.value}}
                         </div>
-                        <a class="related-resource-link" routerLink="./">View persona</a>
+                        <a class="related-resource-link" routerLink="./">{{ getText('viewPersona') }}</a>
                     </div>
                 </div>
             </div>
@@ -57,26 +57,26 @@
             <!-- Main content -->
             <div class="main-content">
                 <!-- Overview -->
-                <div class="content__title">Course overview</div>
+                <div class="content__title"> {{ getText('courseOverview')}}</div>
                 <div class="content__teaser" [innerHtml]="course.shortSummary.value">
                 </div>
                 <div class="button-wrapper">
                     <button class="button course-detail-button" (click)="generatePdf()">
-                        Download course summary in PDF
+                        {{ getText('downloadPdf')}}
                     </button>
                 </div>
-                <a class="content__buy-link">Buy the course for {{ coursePrice }}</a>
+                <a class="content__buy-link"> {{ getText('buyFor')}} {{ coursePrice }}</a>
 
                 <!-- Modules -->
                 <div class="modules">
-                    <div class="modules__title">Modules</div>
+                    <div class="modules__title">{{ getText('modules')}}</div>
                     <!-- Module 1 -->
                     <div class="module" *ngFor="let module of course.modules.value; let i = index">
                         <div class="module__title">{{ i + 1}}: {{ module.title.value }}</div>
                         <div class="module__overview" [innerHtml]="module.shortSummary.value">
                         </div>
                         <div class="module__structure">
-                            <div class="module__structure-title">Module structure:</div>
+                            <div class="module__structure-title">{{getText('moduleStructure')}}:</div>
                             <ul class="module__structure-list">
 
                                 <li class="list-item list-item"
