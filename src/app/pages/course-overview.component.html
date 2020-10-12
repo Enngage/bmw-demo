@@ -65,6 +65,11 @@
                         {{ getText('downloadPdf')}}
                     </button>
                 </div>
+                <div class="button-wrapper">
+                    <button class="button course-detail-button" (click)="generatePdfAlternate()">
+                        Sample pdf download
+                    </button>
+                </div>
                 <a class="content__buy-link" routerLink="./"> {{ getText('buyFor')}} {{ coursePrice }}</a>
 
                 <!-- Modules -->

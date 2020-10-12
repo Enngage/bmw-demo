@@ -7,6 +7,7 @@ import { CourseNew } from '../data/course_new';
 import { CustomerPersona } from '../data/customer_persona';
 import { Module } from '../data/module_01a2a1b';
 import { pdfGeneratorHelper } from '../helpers/pdf-generator.helper';
+import { PdfService } from '../services/pdf.service';
 
 @Component({
     templateUrl: './course-overview.component.html',
@@ -94,14 +95,20 @@ export class CourseOverviewComponent extends BaseComponent implements OnInit {
         this.loadCourse(this.courseCodename);
     }
 
-    /**
-     * https://github.com/MrRio/jsPDF
-     */
     generatePdf(): void {
         if (!this.course) {
             return;
         }
         pdfGeneratorHelper.generateCourseSummary(this.course);
+    }
+
+    async generatePdfAlternate(): Promise<void> {
+        if (!this.course) {
+            return;
+        }
+
+        const pdfService = new PdfService();
+        await pdfService.createSamplePdf();
     }
 
     getPersonaImage(persona: CustomerPersona): string {

@@ -12,7 +12,11 @@ import { Router } from '@angular/router';
     providedIn: 'root'
 })
 export class BaseDependencies {
-    constructor(public kontentClientService: KontentClientService, public languageService: LanguageService, public router: Router) {}
+    constructor(
+        public kontentClientService: KontentClientService,
+        public languageService: LanguageService,
+        public router: Router
+    ) {}
 }
 
 @Directive()
